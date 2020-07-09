@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Roku Remote</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<script>
+			function send(element) {
+				fetch(`//${window.location.hash.substr(1)}:8060/keypress/${element.dataset.button}`, {method: 'POST', mode: 'no-cors'});
+			}
+			function launch(element) {
+				fetch(`//${window.location.hash.substr(1)}:8060/launch/${element.dataset.id}`, {method: 'POST', mode: 'no-cors'});
+			}
+		</script>
+		
+		<link rel="stylesheet" type="text/css" href="normalize.css">
+		<link rel="stylesheet" type="text/css" href="skeleton.css">
+		<!--<button class="button columns" data-button="" onclick="send(this)"></button>-->
+	</head>
+	<body class="container">
+		<div class="row">
+			<button class="button six columns" onclick="window.location.hash = prompt('Please enter the IP address of a Roku device (IP address can be found by going to Settings, Network, About)', window.location.hash.substr(1)) || window.location.hash">Change Device</button>
+		<!--</div>
+		<div class="row">-->
+			<button class="button six columns" data-button="Power" onclick="send(this)" style="color: red">Power</button>
+		</div>
+		<div class="row">
+			<button class="button four columns" data-button="VolumeUp" onclick="send(this)">Volume Up</button>
+			<button class="button four columns" data-button="VolumeMute" onclick="send(this)">Mute</button>
+			<button class="button four columns" data-button="VolumeDown" onclick="send(this)">Volume Down</button>
+		</div>
+		<div class="row">
+			<button class="button six columns" data-button="Back" onclick="send(this)">Back</button>
+			<button class="button six columns" data-button="Home" onclick="send(this)">Home</button>
+		</div>
+		<br>
+		<div class="row">
+			<button class="button offset-by-four four columns" data-button="Up" onclick="send(this)">Up</button>
+		</div>
+		<div class="row">
+			<button class="button four columns" data-button="Left" onclick="send(this)">Left</button>
+			<button class="button four columns" data-button="Select" onclick="send(this)">OK</button>
+			<button class="button four columns" data-button="Right" onclick="send(this)">Right</button>
+		</div>
+		<div class="row">
+			<button class="button offset-by-four four columns" data-button="Down" onclick="send(this)">Down</button>
+		</div>
+		<br>
+		<div class="row">
+			<button class="button six columns" data-button="InstantReplay" onclick="send(this)">Instant Replay</button>
+			<button class="button six columns" data-button="Info" onclick="send(this)">Info</button>
+		</div>
+		<div class="row">
+			<button class="button four columns" data-button="Rev" onclick="send(this)">Reverse</button>
+			<button class="button four columns" data-button="Play" onclick="send(this)">Play/Pause</button>
+			<button class="button four columns" data-button="Fwd" onclick="send(this)">Forward</button>
+		</div>
+		<br>
+		<div class="row">
+			<button class="button offset-by-two four columns" data-id="837" onclick="launch(this)">YouTube</button>
+			<button class="button four columns" data-id="12" onclick="launch(this)">Netflix</button>
+		</div>
+		<div class="row">
+			<button class="button offset-by-two four columns" data-id="2285" onclick="launch(this)">Hulu</button>
+			<button class="button four columns" data-id="19977" onclick="launch(this)">Spotify</button>
+		</div>
+	</body>
+</html>
