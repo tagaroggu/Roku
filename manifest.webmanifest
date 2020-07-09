@@ -5,7 +5,7 @@
 	"background_color": "#FFFFFF",
 	"theme_color": "#FFFFFF",
 	"display": "standalone",
-	"scope": "/",
+	"scope": "/Roku",
 	"start_url": "/",
 	"icons": [{
 		"src": "/assets/192.png",
