@@ -5,8 +5,12 @@
 		<title>Roku Remote</title>
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="manifest" href="/manifest.webmanifest">
 		
 		<script>
+			navigator.serviceWorker && navigator.serviceWorker.register('./serviceworker.js').then(function(registration) {
+				console.log('Excellent, registered with scope: ', registration.scope);
+			});
 			function send(element) {
 				fetch(`//${window.location.hash.substr(1)}:8060/keypress/${element.dataset.button}`, {method: 'POST', mode: 'no-cors'});
 			}
@@ -15,8 +19,8 @@
 			}
 		</script>
 		
-		<link rel="stylesheet" type="text/css" href="./normalize.css">
-		<link rel="stylesheet" type="text/css" href="./skeleton.css">
+		<link rel="stylesheet" type="text/css" href="normalize.css">
+		<link rel="stylesheet" type="text/css" href="skeleton.css">
 		<!--<button class="button columns" data-button="" onclick="send(this)"></button>-->
 	</head>
 	<body class="container">
